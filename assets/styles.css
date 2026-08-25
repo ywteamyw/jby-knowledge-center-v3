@@ -594,3 +594,38 @@ footer.site{background:var(--page);padding:48px 40px 40px;color:var(--c2);font-s
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:76px}
 .acard .date{margin:8px 22px 22px;padding-top:8px;border-top:0.5px solid var(--line);
   font-size:16px;line-height:24px;letter-spacing:0;color:#2a2a36}
+
+/* ============================================================
+   VARIANT 2 (V3) — unified content hub: badge cards, chip filters,
+   compact internal-page hero. Additions only; overrides come last.
+   ============================================================ */
+
+/* Compact hero for an internal page (breadcrumb + shorter) */
+.kc-hero.home .kc-hero-inner{padding-top:26px;padding-bottom:56px}
+.kc-hero.home .kc-crumbs{padding-top:96px}
+@media(max-width:640px){.kc-hero.home .kc-crumbs{padding-top:88px}.kc-hero.home .kc-hero-inner{padding-bottom:44px}}
+
+/* Unified grid + card (one card format for every content type) */
+.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 24px}
+@media(max-width:900px){.ugrid{grid-template-columns:repeat(2,1fr);gap:30px 20px}}
+@media(max-width:560px){.ugrid{grid-template-columns:1fr}}
+.ucard{display:flex;flex-direction:column;color:inherit;align-self:start}
+.ucard .uc-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:2px;background:#0a1218}
+.ucard .uc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.ucard:hover .uc-thumb img{transform:scale(1.05)}
+.ucard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s var(--ease-out)}
+.ucard:hover video{opacity:1}
+.uc-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Myriad Pro',sans-serif;font-size:14px;letter-spacing:.02em;color:#fff;background:rgba(65,100,123,.92);padding:5px 11px;border-radius:2px}
+.uc-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:54px;height:54px;border-radius:2px;background:rgba(15,24,30,.42);backdrop-filter:blur(5px);border:1px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:opacity .3s}
+.ucard:hover .uc-play{opacity:1}
+.uc-play svg{width:20px;height:20px;margin-left:2px}
+.uc-body{padding:16px 2px 0}
+.ucard h3{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:19px;line-height:26px;letter-spacing:0;text-transform:uppercase;color:var(--ink);margin:0 0 9px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:52px}
+.uc-meta{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:15px;line-height:22px;color:#55555d;margin:0}
+
+/* Horizontal filter chips (replace the sidebar) */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px}
+.chips .chip{font-family:'Myriad Pro',sans-serif;font-weight:400;font-size:15px;line-height:1;color:var(--c2);background:transparent;border:1px solid var(--border);border-radius:100px;padding:10px 18px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.chips .chip:hover{border-color:var(--navy);color:var(--navy)}
+.chips .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}

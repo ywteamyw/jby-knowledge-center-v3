@@ -35,7 +35,7 @@
   function kcnavHTML(){
     var cur = document.body.dataset.kc || "";
     var items = [
-      ["all","All"],["videos","Videos"],["events","Past Events"],["insights","Insights & News"]
+      ["latest","Latest"],["videos","Videos"],["events","Past Events"],["insights","Insights & News"]
     ];
     var links = items.map(function(it){
       return '<a href="index.html#'+it[0]+'" data-tab="'+it[0]+'"'+(cur===it[0]?' class="active"':'')+'>'+it[1]+'</a>';
@@ -229,7 +229,7 @@
     function show(name){
       var ok=false;
       panels.forEach(function(p){var on=(p.id==="panel-"+name);p.classList.toggle("active",on);if(on)ok=true;});
-      if(!ok){name="all";panels.forEach(function(p){p.classList.toggle("active",p.id==="panel-all");});}
+      if(!ok){name="latest";panels.forEach(function(p){p.classList.toggle("active",p.id==="panel-latest");});}
       navLinks.forEach(function(a){a.classList.toggle("active",a.dataset.tab===name);});
       return name;
     }
@@ -243,7 +243,7 @@
       if(history.replaceState) history.replaceState(null,"",location.pathname+"#"+name);
     });
     window.addEventListener("hashchange", function(){ show((location.hash||"").replace("#","")||"all"); });
-    show((location.hash||"").replace("#","")||"all");
+    show((location.hash||"").replace("#","")||"latest");
   })();
 
   /* ---------- Video cards — autoplay preview on hover ---------- */
