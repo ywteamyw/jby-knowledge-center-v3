@@ -60,12 +60,10 @@
   <div class="hub-panel" id="panel-events">
     <section class="sec">
       <div class="wrap">
-        <div class="chips" data-chips="grid-events" data-axis="brand" role="tablist" aria-label="Filter events by brand">
+        <div class="chips" data-chips="grid-events" data-axis="region" role="tablist" aria-label="Filter events by region">
           <button class="chip on" data-val="all">All</button>
-          <button class="chip" data-val="axopar">Axopar</button>
-          <button class="chip" data-val="brabus">BRABUS</button>
-          <button class="chip" data-val="riva">Riva</button>
-          <button class="chip" data-val="pershing">Pershing</button>
+          <button class="chip" data-val="west">West Coast</button>
+          <button class="chip" data-val="east">East Coast</button>
         </div>
         <div class="ugrid" id="grid-events"></div>
         <div class="sec-foot"><a class="btn btn-md btn-ghost-navy" href="https://ywteamyw.github.io/jby-events/v3-filters.html" target="_blank" rel="noopener">View Upcoming Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 6 6 6-6 6"/></svg></a></div>
@@ -107,14 +105,14 @@
     {k:"video",href:"video.html?v=dWhl8WauQQw",img:"marina-newport.jpg",t:"Jeff Brown Yachts at the Seattle Boat Show",cat:"event-recaps",meta:"Event Recap"},
     {k:"video",href:"video.html?v=TO-hFcdKXWA",img:"card_service.jpg",t:"Axopar Education: Setting Up Fuel on an Axopar 37",cat:"behind-the-scenes",meta:"Behind the Scenes"},
     /* ---- Past Events ---- */
-    {k:"event",href:"event.html?e=lake-tahoe",img:"ev_pebble.jpg",t:"Lake Tahoe Concours d'Elegance",brand:"riva",meta:"Aug 2026 · Lake Tahoe"},
-    {k:"event",href:"event.html?e=san-diego",img:"marina-sandiego.jpg",t:"San Diego International Boat Show",brand:"axopar",meta:"Jun 2026 · San Diego"},
-    {k:"event",href:"event.html?e=miami",img:"vessel-pershing.jpg",t:"Miami International Boat Show",brand:"pershing",meta:"Feb 2026 · Miami"},
-    {k:"event",href:"event.html?e=mid-atlantic",img:"vessel-axopar.jpg",t:"Mid-Atlantic Boat Show",brand:"axopar",meta:"Feb 2026 · Baltimore"},
-    {k:"event",href:"event.html?e=charleston",img:"marina-newport.jpg",t:"Charleston Boat Show",brand:"axopar",meta:"Jan 2026 · Charleston"},
-    {k:"event",href:"event.html?e=fort-lauderdale",img:"event_flibs.jpg",t:"Fort Lauderdale International Boat Show",brand:"brabus",meta:"Oct 2025 · Fort Lauderdale"},
-    {k:"event",href:"event.html?e=sausalito",img:"ev_sausalito.jpg",t:"Sausalito Boat Show (4th Annual)",brand:"brabus",meta:"Sep 2025 · Sausalito"},
-    {k:"event",href:"event.html?e=carolinas",img:"vessel-brabus.jpg",t:"Axopar & BRABUS Carolinas Adventure",brand:"axopar",meta:"Jul 2024 · Carolinas"},
+    {k:"event",href:"event.html?e=lake-tahoe",img:"ev_pebble.jpg",t:"Lake Tahoe Concours d'Elegance",brand:"riva",meta:"Aug 2026 · Lake Tahoe",region:"west"},
+    {k:"event",href:"event.html?e=san-diego",img:"marina-sandiego.jpg",t:"San Diego International Boat Show",brand:"axopar",meta:"Jun 2026 · San Diego",region:"west"},
+    {k:"event",href:"event.html?e=miami",img:"vessel-pershing.jpg",t:"Miami International Boat Show",brand:"pershing",meta:"Feb 2026 · Miami",region:"east"},
+    {k:"event",href:"event.html?e=mid-atlantic",img:"vessel-axopar.jpg",t:"Mid-Atlantic Boat Show",brand:"axopar",meta:"Feb 2026 · Baltimore",region:"east"},
+    {k:"event",href:"event.html?e=charleston",img:"marina-newport.jpg",t:"Charleston Boat Show",brand:"axopar",meta:"Jan 2026 · Charleston",region:"east"},
+    {k:"event",href:"event.html?e=fort-lauderdale",img:"event_flibs.jpg",t:"Fort Lauderdale International Boat Show",brand:"brabus",meta:"Oct 2025 · Fort Lauderdale",region:"east"},
+    {k:"event",href:"event.html?e=sausalito",img:"ev_sausalito.jpg",t:"Sausalito Boat Show (4th Annual)",brand:"brabus",meta:"Sep 2025 · Sausalito",region:"west"},
+    {k:"event",href:"event.html?e=carolinas",img:"vessel-brabus.jpg",t:"Axopar & BRABUS Carolinas Adventure",brand:"axopar",meta:"Jul 2024 · Carolinas",region:"east"},
     /* ---- Insights & News (articles) ---- */
     {k:"article",href:"article.html?a=pershing-us-dealer",img:"brand-pershing.jpg",t:"Pershing Names Jeff Brown Yachts Exclusive US Dealer",cat:"news",meta:"October 28, 2025 · 3 min read"},
     {k:"article",href:"article.html?a=viggen",img:"marina-sandiego.jpg",t:"Owner Feature: Joe Dagostino's J/105 \"Viggen\"",cat:"owner",meta:"August 5, 2025 · 5 min read"},
@@ -141,7 +139,7 @@
       onimg = '<span class="uc-date">'+CAL+p[0]+'</span>';
       meta  = p[1] || it.meta;               /* location shows below */
     }
-    return '<a class="ucard uc-'+it.k+'" data-k="'+it.k+'" data-cat="'+(it.cat||"")+'" data-brand="'+(it.brand||"")+'" href="'+it.href+'">'
+    return '<a class="ucard uc-'+it.k+'" data-k="'+it.k+'" data-cat="'+(it.cat||"")+'" data-brand="'+(it.brand||"")+'" data-region="'+(it.region||"")+'" href="'+it.href+'">'
       + '<div class="uc-thumb"><img src="assets/img/'+it.img+'" alt="" />'+onimg+'<span class="uc-badge">'+BADGE[it.k]+'</span></div>'
       + '<div class="uc-body"><h3>'+it.t+'</h3><p class="uc-meta">'+meta+'</p></div></a>';
   }
