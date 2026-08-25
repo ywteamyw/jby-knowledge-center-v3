@@ -132,15 +132,22 @@
     {k:"article",href:"article.html?a=modern-luxury",img:"lifestyle-expertise.jpg",t:"Jeff Brown: Modern Luxury \"Power Players\" Spotlight",cat:"news",meta:"May 27, 2022 · 4 min read"}
   ];
   var BADGE = {video:"Video", event:"Past Event", article:"Article"};
-  function esc(s){ return String(s).replace(/"/g,"&quot;"); }
+  var CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>';
+  var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
   function card(it){
-    var hover = it.k==="video"
-      ? '<video muted loop playsinline preload="none"><source src="assets/video/hover.mp4" type="video/mp4"></video>'
-        +'<span class="uc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>'
-      : "";
-    return '<a class="ucard" data-k="'+it.k+'" data-cat="'+(it.cat||"")+'" data-brand="'+(it.brand||"")+'" href="'+it.href+'">'
-      + '<div class="uc-thumb"><img src="assets/img/'+it.img+'" alt="" />'+hover+'<span class="uc-badge">'+BADGE[it.k]+'</span></div>'
-      + '<div class="uc-body"><h3>'+it.t+'</h3><p class="uc-meta">'+it.meta+'</p></div></a>';
+    /* Same footprint for every card; the on-image cue + meta differ by type. */
+    var onimg = "", meta = it.meta;
+    if(it.k==="video"){
+      onimg = '<video muted loop playsinline preload="none"><source src="assets/video/hover.mp4" type="video/mp4"></video>'
+            + '<span class="uc-play">'+PLAY+'</span>';
+    } else if(it.k==="event"){
+      var p = it.meta.split(" · ");          /* "Aug 2026 · Lake Tahoe" */
+      onimg = '<span class="uc-date">'+CAL+p[0]+'</span>';
+      meta  = p[1] || it.meta;               /* location shows below */
+    }
+    return '<a class="ucard uc-'+it.k+'" data-k="'+it.k+'" data-cat="'+(it.cat||"")+'" data-brand="'+(it.brand||"")+'" href="'+it.href+'">'
+      + '<div class="uc-thumb"><img src="assets/img/'+it.img+'" alt="" />'+onimg+'<span class="uc-badge">'+BADGE[it.k]+'</span></div>'
+      + '<div class="uc-body"><h3>'+it.t+'</h3><p class="uc-meta">'+meta+'</p></div></a>';
   }
   function bindHover(root){
     root.querySelectorAll(".ucard").forEach(function(c){
