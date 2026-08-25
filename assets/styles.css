@@ -600,10 +600,9 @@ footer.site{background:var(--page);padding:48px 40px 40px;color:var(--c2);font-s
    compact internal-page hero. Additions only; overrides come last.
    ============================================================ */
 
-/* Compact hero for an internal page (breadcrumb + shorter) */
-.kc-hero.home .kc-hero-inner{padding-top:26px;padding-bottom:56px}
-.kc-hero.home .kc-crumbs{padding-top:96px}
-@media(max-width:640px){.kc-hero.home .kc-crumbs{padding-top:88px}.kc-hero.home .kc-hero-inner{padding-bottom:44px}}
+/* Compact hero for an internal page (no breadcrumb) */
+.kc-hero.home .kc-hero-inner{padding-top:112px;padding-bottom:56px}
+@media(max-width:640px){.kc-hero.home .kc-hero-inner{padding-top:104px;padding-bottom:44px}}
 
 /* Unified grid + card (one card format for every content type) */
 .ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 24px}
